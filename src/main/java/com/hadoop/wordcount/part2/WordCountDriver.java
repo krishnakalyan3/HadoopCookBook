@@ -32,9 +32,11 @@ public class WordCountDriver extends Configured implements Tool{
         Job job =new Job(getConf(),"WordCount");
         job.setJarByClass(WordCountDriver.class);
         job.setMapperClass(WordCountMapper.class);
-        job.setInputFormatClass(TextInputFormat.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+        job.setReducerClass(WordCountReducer.class);
 
         FileInputFormat.addInputPath(job, new Path(strings[0]));
         FileOutputFormat.setOutputPath(job,new Path(strings[1]));
