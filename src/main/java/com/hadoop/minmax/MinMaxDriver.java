@@ -38,7 +38,7 @@ public class MinMaxDriver extends Configured implements Tool {
         job.setMapOutputValueClass(IntWritable.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
-        //job.setReducerClass(WordCountReducer.class);
+        job.setReducerClass(MinMaxReducer.class);
 
         FileInputFormat.addInputPath(job, new Path(strings[0]));
         FileOutputFormat.setOutputPath(job, new Path(strings[1]));
